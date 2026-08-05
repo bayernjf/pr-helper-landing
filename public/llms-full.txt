@@ -1,0 +1,85 @@
+# PR Helper — 完整可引用文档（中文）
+
+## 产品定义
+
+PR Helper 是 GitHub 优先的 PR / Release 控制塔（GitHub PR / Release Control Tower），跨仓库协调真实的 Pull Request 与部署工作流。一个 Lane 可包含线性阶段、独立合并路由、动态源规则与汇聚闸门，例如 feature/* + fix/* → dev → main。
+
+PR Helper 不是看板，不是合并队列，也不是部署托管平台。它管理的最小单位是发布工作流，而不是一个 issue、一条 PR 或一个仓库。
+
+GitHub 始终是分支保护、评审、检查、可合并性、Actions 与环境保护的权威。PR Helper 负责跨仓库的 Lane 状态编排、闸门决策、部署追踪与确认回滚。PR Helper 可以保证流程与证据完整，不能替代 GitHub 的分支保护与人工审批。
+
+## 责任边界
+
+### GitHub 权威
+
+- 分支保护规则与 Rulesets（事实来源）
+- 评审指派与审批决策
+- Actions、Checks 与环境保护
+- 可合并性与合并方式
+- 仓库与 GitHub App 安装范围
+- 生产合并与回滚的最终决策
+
+### PR Helper 负责
+
+- 跨仓库的 Lane 状态编排与推进
+- 从 GitHub 事实评估闸门决策
+- 实时 Webhook 摄入与定时对账
+- 关闭标签页的 Web Push 送达
+- AI 生成的 PR 草稿（密钥仅会话）
+- 部署追踪、健康检查与审计事件
+- 仅在用户明确确认后调度回滚
+
+## 产品宪法
+
+1. GitHub 是权威：永远不在 UI 状态中绕过 GitHub 的拒绝。
+2. 显式生产操作：生产合并与回滚都是显式用户操作，无单独获批设计前不自动执行。
+3. 外部事实高于自述：闸门决策基于真实 GitHub 事实，而非 Agent 或 UI 的自然语言总结。
+4. 实时 + 对账：Webhook 提供实时速度，定时对账保证正确性。
+5. 凭据不落浏览器：GitHub App 密钥与安装令牌保留在服务端模块 api/_lib/ 下。AI 密钥仅会话级。
+6. 迁移即事实：数据库变更只能新增有序迁移文件，不在运行时执行 DDL，不编辑已应用的迁移。
+
+## Lane 工作流
+
+```text
+配置 Lane → GitHub App 安装 → PR 流入 → 闸门决策 → 阶段推进
+→ 部署追踪 → AI PR 草稿 → Web Push → 确认回滚
+```
+
+- 源规则：feature/* 与 fix/* 都流入 dev 阶段
+- 线性阶段：dev 合并后才能进 main
+- 独立路由：hotfix 可直接进 main，无需等 dev
+- 汇聚闸门：dev 与 main 都需后置检查/部署闸门成功
+- 依赖阶段必须等所有前置阶段合并且后置闸门成功后才能推进
+
+## 对比表
+
+| 维度 | PR Helper | GitHub Projects | MergeQueue | Vercel | 人工协调 |
+| --- | --- | --- | --- | --- | --- |
+| 管理单位 | 跨仓库发布工作流 | 任务/issue | PR 合并顺序 | 部署托管 | 电子表格/IM |
+| GitHub 原生 | 是，GitHub App + Webhook | 是 | 是 | 部分 | 否 |
+| 跨仓库 Lane | 是，线性/独立/汇聚 | 有限 | 否 | 否 | 临时拼凑 |
+| 汇聚闸门 | 是 | 否 | 否 | 否 | 人工核对 |
+| 闸门决策来源 | GitHub 事实链 | issue 状态 | 合并队列状态 | 部署状态 | 人工判断 |
+| Web Push 送达 | 是，关闭标签页 | 有限 | 否 | 有限 | 否 |
+| 确认回滚 | 显式用户操作 + 审计 | 否 | 否 | 即时回滚 | 人工回滚 |
+| AI PR 草稿 | 是，24h + 流式 | 否 | 否 | 否 | 否 |
+
+## FAQ
+
+### PR Helper 是什么？
+GitHub 优先的 PR / Release 控制塔，跨仓库协调真实的 Pull Request 与部署工作流。一个 Lane 可包含线性阶段、独立合并路由、动态源规则与汇聚闸门。
+
+### PR Helper 会绕过 GitHub 分支保护吗？
+不会。GitHub 始终是权威。PR Helper 永不在 UI 状态中绕过 GitHub 的拒绝。
+
+### 生产合并与回滚是自动的吗？
+不是。两者都是显式用户操作。无单独获批设计前不自动执行。回滚调度记录完整审计事件。
+
+### GitHub 凭据与安装令牌存在哪里？
+保留在服务端模块 api/_lib/ 下，永不暴露给浏览器。AI 密钥仅会话级。
+
+### 工作流与监控状态如何持久化？
+Supabase Postgres（DATABASE_URL），有序迁移位于 db/migrations/ 是 schema 唯一事实来源。Webhook + 定时对账；Web Push 需 SW + VAPID + 订阅 + 服务端对账同时就绪。
+
+### 什么是 Lane？独立路由可以不等前面的阶段吗？
+Lane 是项目编排单元。依赖阶段需前置合并与后置闸门全部成功；独立路由可不等更早的线性阶段。

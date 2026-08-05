@@ -1,0 +1,85 @@
+# PR Helper — Full citable docs (English)
+
+## Product definition
+
+PR Helper is a GitHub-first PR / Release Control Tower that coordinates real pull-request and deployment workflows across repositories. A Lane can contain linear stages, independent merge routes, dynamic source rules, and convergence gates, e.g. feature/* + fix/* → dev → main.
+
+PR Helper is not a board, not a merge queue, and not a deploy-hosting platform. Its minimum unit is the release workflow, not a single issue, PR, or repo.
+
+GitHub remains the authority for branch protection, reviews, checks, mergeability, Actions, and Environment protection. PR Helper orchestrates cross-repo Lane state, gate decisions, deployment tracking, and confirmed rollback. PR Helper guarantees process and evidence integrity, not a replacement for GitHub branch protection or human approval.
+
+## Responsibility boundary
+
+### GitHub authority
+
+- Branch protection rulesets (source of truth)
+- Reviewer assignment and approval decisions
+- Actions, Checks, and Environment protection
+- Mergeability and merge method
+- Repository and GitHub App installation scope
+- Final decision on production merge and rollback
+
+### PR Helper is responsible for
+
+- Cross-repo Lane state orchestration and advance
+- Gate decisions evaluated from GitHub facts
+- Real-time Webhook ingestion and scheduled reconciliation
+- Closed-tab Web Push delivery
+- AI-generated PR drafts (session-only keys)
+- Deployment tracking, health checks, and audit events
+- Rollback dispatch only after explicit user confirmation
+
+## Product constitution
+
+1. GitHub is the authority: never bypass a GitHub rejection in UI state.
+2. Explicit production actions: production merge and rollback are explicit user actions; not automatic without an approved design.
+3. External facts over self-report: gate decisions are grounded in real GitHub facts, not Agent or UI natural-language summaries.
+4. Real-time + reconciliation: Webhooks provide real-time speed; scheduled reconciliation guarantees correctness.
+5. Credentials never reach the browser: GitHub App secrets and installation tokens stay behind server modules under api/_lib_. AI keys are session-only.
+6. Migrations are the truth: database changes go only in new ordered migration files. No runtime DDL, and never edit an already-applied migration.
+
+## Lane workflow
+
+```text
+Configure Lane → GitHub App install → PR intake → Gate decisions → Stage advance
+→ Deploy tracking → AI PR drafts → Web Push → Confirmed rollback
+```
+
+- Source rules: both feature/* and fix/* flow into the dev stage
+- Linear stage: dev must merge before main
+- Independent route: a hotfix can go straight to main without waiting for dev
+- Convergence gate: both dev and main require post-merge check/deploy gates to succeed
+- A dependent stage advances only after all predecessor stages merge and their post-merge gates succeed
+
+## Comparison table
+
+| Dimension | PR Helper | GitHub Projects | MergeQueue | Vercel | Manual |
+| --- | --- | --- | --- | --- | --- |
+| Unit managed | Cross-repo release workflow | Tasks/issues | PR merge order | Deploy hosting | Spreadsheets/IM |
+| GitHub-native | Yes, GitHub App + Webhook | Yes | Yes | Partial | No |
+| Cross-repo Lane | Yes, linear/independent/convergence | Limited | No | No | Ad hoc |
+| Convergence gate | Yes | No | No | No | Manual check |
+| Gate decision source | GitHub fact chain | Issue status | Queue status | Deploy status | Human judgment |
+| Web Push delivery | Yes, closed-tab | Limited | No | Limited | No |
+| Confirmed rollback | Explicit user action + audit | No | No | Instant rollback | Manual rollback |
+| AI PR drafts | Yes, 24h + streaming | No | No | No | No |
+
+## FAQ
+
+### What is PR Helper?
+A GitHub-first PR / Release Control Tower that coordinates real pull-request and deployment workflows across repositories. A Lane can contain linear stages, independent merge routes, dynamic source rules, and convergence gates.
+
+### Does PR Helper bypass GitHub branch protection?
+No. GitHub remains the authority. PR Helper never bypasses a GitHub rejection in UI state.
+
+### Are production merge and rollback automatic?
+No. Both are explicit user actions. Not automatic without an approved design. Rollback dispatch records full audit events.
+
+### Where are GitHub credentials and installation tokens stored?
+Behind server modules under api/_lib/, never exposed to the browser. AI keys are session-only.
+
+### How are workflow and monitoring state persisted?
+Supabase Postgres via DATABASE_URL; ordered migrations in db/migrations/ are the single source of truth for schema. Webhooks + scheduled reconciliation; Web Push requires SW + VAPID + subscription + server reconciliation.
+
+### What is a Lane? Can independent routes proceed without earlier stages?
+A Lane is a project orchestration unit. Dependent stages need predecessor merge + post-merge gates; independent routes need not wait for earlier linear stages.

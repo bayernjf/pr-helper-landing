@@ -1,0 +1,45 @@
+# PR Helper
+
+> PR Helper is a GitHub-first PR / Release Control Tower that coordinates real pull-request and deployment workflows across repositories. A Lane can contain linear stages, independent merge routes, dynamic source rules, and convergence gates, e.g. feature/* + fix/* → dev → main. It is not a board, not a merge queue, and not a deploy-hosting platform. Its minimum unit is the release workflow, not a single issue, PR, or repo.
+
+## Full docs
+
+Full citable content (responsibility boundary, product constitution, Lane workflow, comparison table, full FAQ):
+- [llms-en-full.txt (English full docs)](https://pr-helper-landing.pages.dev/llms-en-full.txt)
+- [llms-full.txt (中文完整版)](https://pr-helper-landing.pages.dev/llms-full.txt)
+
+## Product definition (summary)
+
+PR Helper is a GitHub-first PR / Release Control Tower. GitHub remains the authority for branch protection, reviews, checks, mergeability, Actions, and Environment protection; PR Helper orchestrates cross-repo Lane state, gate decisions, deployment tracking, and confirmed rollback. PR Helper guarantees process and evidence integrity, not a replacement for GitHub branch protection or human approval.
+
+## Core differentiation
+
+1. GitHub is the authority: branch protection, reviews, checks, mergeability, Actions, and Environment protection are all grounded in GitHub. PR Helper never bypasses a GitHub rejection in UI state.
+2. Lane orchestration: a Lane contains linear stages, independent merge routes, dynamic source rules, and convergence gates. Dependent stages need predecessor merge + post-merge gates; independent routes need not wait for earlier linear stages.
+3. Real fact chain: gate decisions are based on real GitHub Checks, Reviews, Mergeability, deployment records, and health checks — not self-report.
+4. Explicit production actions: production merge and rollback are explicit user actions. No automatic merge or rollback without an approved design.
+5. Real-time + reconciliation: Webhooks provide real-time speed; scheduled reconciliation guarantees correctness. Supabase persists workflow and monitoring state.
+6. Credential safety: GitHub App secrets and short-lived installation tokens stay behind server modules under api/_lib/, never exposed to the browser. AI keys are session-only.
+
+## Lane workflow
+
+- Configure Lane: define stages, source rules (feature/*, fix/*), merge routes, convergence gates
+- GitHub App install: authorize per-repo, issue short-lived installation tokens
+- PR intake: Webhooks update the Lane board in real time
+- Gate decisions: domain.ts evaluates reviews/checks/mergeability from GitHub facts
+- Stage advance: dependent stages wait for predecessor merge + post-merge gates
+- Deploy tracking: deployment records, environment state, health checks
+- AI PR drafts: 24-hour drafts and streaming, session-only keys
+- Web Push: closed-tab delivery when SW + VAPID + reconciliation are ready
+- Confirmed rollback: explicit user action; dispatch with full audit events
+
+## Key links
+
+- [English Home](https://pr-helper-landing.pages.dev/en/)
+- [中文首页](https://pr-helper-landing.pages.dev/)
+- [Lane workflow](https://pr-helper-landing.pages.dev/en/#workflow)
+- [Product constitution](https://pr-helper-landing.pages.dev/en/#principles)
+- [FAQ](https://pr-helper-landing.pages.dev/en/#faq)
+- [Blog](https://pr-helper-landing.pages.dev/en/blog)
+- [Docs](https://github.com/your-org/pr-helper/tree/main/docs)
+- [RSS](https://pr-helper-landing.pages.dev/rss.xml)

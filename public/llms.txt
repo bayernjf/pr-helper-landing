@@ -1,0 +1,45 @@
+# PR Helper
+
+> PR Helper 是 GitHub 优先的 PR / Release 控制塔（GitHub PR / Release Control Tower），跨仓库协调真实的 Pull Request 与部署工作流。一个 Lane 可包含线性阶段、独立合并路由、动态源规则与汇聚闸门，例如 feature/* + fix/* → dev → main。它不是看板，不是合并队列，也不是部署托管平台。它管理的最小单位是发布工作流，而不是一个 issue、一条 PR 或一个仓库。
+
+## 完整文档
+
+完整可引用内容（含责任边界、产品宪法、Lane 工作流、对比表、FAQ 全文）：
+- [llms-full.txt（中文完整版）](https://pr-helper-landing.pages.dev/llms-full.txt)
+- [llms-en-full.txt（English full docs）](https://pr-helper-landing.pages.dev/llms-en-full.txt)
+
+## 产品定义（摘要）
+
+PR Helper 属于 GitHub 优先的 PR / Release 控制塔。GitHub 始终是分支保护、评审、检查、可合并性、Actions 与环境保护的权威；PR Helper 负责跨仓库的 Lane 状态编排、闸门决策、部署追踪与确认回滚。PR Helper 可以保证流程与证据完整，不能替代 GitHub 的分支保护与人工审批。
+
+## 核心差异化
+
+1. GitHub 是权威：分支保护、评审、检查、可合并性、Actions、环境保护均以 GitHub 为准。PR Helper 永不在 UI 状态中绕过 GitHub 的拒绝。
+2. Lane 编排：一个 Lane 包含线性阶段、独立合并路由、动态源规则与汇聚闸门。依赖阶段需前置合并与后置闸门全部成功；独立路由可不等更早的线性阶段。
+3. 真实事实链：闸门决策基于真实的 GitHub Checks、Reviews、Mergeability、部署记录与健康检查，而非自述。
+4. 显式生产操作：生产合并与回滚都是显式用户操作。无单独获批的设计前，不添加自动生产合并或回滚。
+5. 实时 + 对账：Webhook 提供实时速度，定时对账保证正确性。Supabase 持久化工作流与监控状态。
+6. 凭据安全：GitHub App 密钥与短期安装令牌保留在服务端模块 api/_lib/ 下，永不暴露给浏览器。AI 密钥仅会话级。
+
+## Lane 工作流
+
+- 配置 Lane：定义阶段、源规则（feature/*、fix/*）、合并路由与汇聚闸门
+- GitHub App 安装：按仓库授权，颁发短期安装令牌
+- PR 流入：Webhook 实时更新 Lane 看板
+- 闸门决策：domain.ts 按 GitHub 事实评估评审/检查/可合并性
+- 阶段推进：依赖阶段需前置合并与后置闸门全部成功
+- 部署追踪：部署记录、环境状态与健康检查
+- AI PR 草稿：24 小时草稿与流式生成，密钥仅会话
+- Web Push：关闭标签页也能收到状态送达
+- 确认回滚：显式用户操作，调度并记录审计事件
+
+## 关键链接
+
+- [中文首页](https://pr-helper-landing.pages.dev/)
+- [English Home](https://pr-helper-landing.pages.dev/en/)
+- [Lane 工作流](https://pr-helper-landing.pages.dev/#workflow)
+- [产品宪法](https://pr-helper-landing.pages.dev/#principles)
+- [常见问题](https://pr-helper-landing.pages.dev/#faq)
+- [博客](https://pr-helper-landing.pages.dev/blog)
+- [文档](https://github.com/your-org/pr-helper/tree/main/docs)
+- [RSS 订阅](https://pr-helper-landing.pages.dev/rss.xml)

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pr-helper-landing.pages.dev/sitemap-index.xml
