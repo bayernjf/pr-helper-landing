@@ -1,0 +1,47 @@
+---
+import { useTranslations, localizePath, type Lang } from '../i18n';
+import { SITE_NAME, SOCIAL } from '../consts';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
+
+const links = [
+  { href: localizePath('/blog', lang), label: t('nav.blog') },
+  { href: SOCIAL.docs, label: t('nav.docs'), external: true },
+];
+---
+
+<footer class="border-t border-ink-800/60 bg-ink-950">
+  <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+    <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex h-6 w-6 items-center justify-center rounded bg-brand-500 font-mono text-[10px] font-bold text-white">P</span>
+        <div>
+          <p class="text-sm font-medium text-ink-100">{SITE_NAME}</p>
+          <p class="text-xs text-ink-500">{t('footer.tagline')}</p>
+        </div>
+      </div>
+
+      <nav class="flex flex-wrap items-center justify-center gap-5">
+        {links.map((l) => (
+          <a
+            href={l.href}
+            class="text-xs text-ink-400 transition hover:text-ink-100"
+          >
+            {l.label}
+          </a>
+        ))}
+      </nav>
+    </div>
+
+    <div class="mt-8 border-t border-ink-800/50 pt-6 text-center">
+      <p class="text-xs text-ink-500">
+        © {year} {SITE_NAME}. {t('footer.rights')}
+      </p>
+    </div>
+  </div>
+</footer>

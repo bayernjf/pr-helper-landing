@@ -1,0 +1,92 @@
+---
+import { useTranslations, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const isZh = lang === 'zh';
+
+// 对比维度：聚焦 PR Helper 的差异化——跨仓库发布工作流编排
+const rows =
+  isZh
+    ? [
+        { dim: '管理单位', ph: '跨仓库发布工作流', projects: '任务/issue', mergequeue: 'PR 合并顺序', vercel: '部署托管', manual: '电子表格/IM' },
+        { dim: 'GitHub 原生', ph: '是，GitHub App + Webhook', projects: '是', mergequeue: '是', vercel: '部分', manual: '否' },
+        { dim: '跨仓库 Lane', ph: '是，线性/独立/汇聚', projects: '有限', mergequeue: '否', vercel: '否', manual: '临时拼凑' },
+        { dim: '汇聚闸门', ph: '是', projects: '否', mergequeue: '否', vercel: '否', manual: '人工核对' },
+        { dim: '闸门决策来源', ph: 'GitHub 事实链', projects: 'issue 状态', mergequeue: '合并队列状态', vercel: '部署状态', manual: '人工判断' },
+        { dim: 'Web Push 送达', ph: '是，关闭标签页', projects: '有限', mergequeue: '否', vercel: '有限', manual: '否' },
+        { dim: '确认回滚', ph: '显式用户操作 + 审计', projects: '否', mergequeue: '否', vercel: '即时回滚', manual: '人工回滚' },
+        { dim: 'AI PR 草稿', ph: '是，24h + 流式', projects: '否', mergequeue: '否', vercel: '否', manual: '否' },
+      ]
+    : [
+        { dim: 'Unit managed', ph: 'Cross-repo release workflow', projects: 'Tasks/issues', mergequeue: 'PR merge order', vercel: 'Deploy hosting', manual: 'Spreadsheets/IM' },
+        { dim: 'GitHub-native', ph: 'Yes, GitHub App + Webhook', projects: 'Yes', mergequeue: 'Yes', vercel: 'Partial', manual: 'No' },
+        { dim: 'Cross-repo Lane', ph: 'Yes, linear/independent/convergence', projects: 'Limited', mergequeue: 'No', vercel: 'No', manual: 'Ad hoc' },
+        { dim: 'Convergence gate', ph: 'Yes', projects: 'No', mergequeue: 'No', vercel: 'No', manual: 'Manual check' },
+        { dim: 'Gate decision source', ph: 'GitHub fact chain', projects: 'Issue status', mergequeue: 'Queue status', vercel: 'Deploy status', manual: 'Human judgment' },
+        { dim: 'Web Push delivery', ph: 'Yes, closed-tab', projects: 'Limited', mergequeue: 'No', vercel: 'Limited', manual: 'No' },
+        { dim: 'Confirmed rollback', ph: 'Explicit user action + audit', projects: 'No', mergequeue: 'No', vercel: 'Instant rollback', manual: 'Manual rollback' },
+        { dim: 'AI PR drafts', ph: 'Yes, 24h + streaming', projects: 'No', mergequeue: 'No', vercel: 'No', manual: 'No' },
+      ];
+
+const cols = isZh
+  ? [
+      { key: 'dim', label: '维度' },
+      { key: 'ph', label: 'PR Helper' },
+      { key: 'projects', label: 'GitHub Projects' },
+      { key: 'mergequeue', label: 'MergeQueue' },
+      { key: 'vercel', label: 'Vercel' },
+      { key: 'manual', label: '人工协调' },
+    ]
+  : [
+      { key: 'dim', label: 'Dimension' },
+      { key: 'ph', label: 'PR Helper' },
+      { key: 'projects', label: 'GitHub Projects' },
+      { key: 'mergequeue', label: 'MergeQueue' },
+      { key: 'vercel', label: 'Vercel' },
+      { key: 'manual', label: 'Manual' },
+    ];
+
+const caption = isZh
+  ? 'PR Helper 与 GitHub Projects、MergeQueue、Vercel、人工协调的能力对比'
+  : 'PR Helper vs GitHub Projects, MergeQueue, Vercel, and manual coordination';
+---
+
+<section id="comparison" aria-label={t('compare.title')} class="border-t border-ink-800/60 bg-ink-950 py-20">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-3xl font-bold text-ink-50 sm:text-4xl">{t('compare.title')}</h2>
+      <p class="mt-3 text-ink-400">{t('compare.subtitle')}</p>
+    </div>
+
+    <div class="mt-12 overflow-x-auto">
+      <table class="w-full border-collapse text-sm">
+        <caption class="sr-only">{caption}</caption>
+        <thead>
+          <tr class="border-b border-ink-800">
+            {cols.map((c, i) => (
+              <th scope="col" class={`px-4 py-3 text-left font-medium ${i === 1 ? 'text-brand-300' : 'text-ink-400'}`}>
+                {c.label}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr class="border-b border-ink-800/50">
+              {cols.map((c, i) => (
+                <td class={`px-4 py-3 ${i === 0 ? 'text-ink-300' : ''} ${i === 1 ? 'font-medium text-brand-200' : 'text-ink-400'}`}>
+                  {(row as any)[c.key]}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,82 @@
+---
+import { useTranslations, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const features =
+  lang === 'zh'
+    ? [
+        {
+          title: 'GitHub 是权威',
+          desc: 'GitHub 始终是分支保护、评审、检查、可合并性、Actions 与环境保护的权威。PR Helper 永不在 UI 状态中绕过 GitHub 的拒绝。',
+        },
+        {
+          title: 'Lane 编排',
+          desc: '一个 Lane 包含线性阶段、独立合并路由、动态源规则与汇聚闸门。依赖阶段需前置合并与后置闸门全部成功；独立路由可不等更早的线性阶段。',
+        },
+        {
+          title: '真实事实链',
+          desc: '闸门决策基于真实的 GitHub Checks、Reviews、Mergeability、部署记录与健康检查，而非 Agent 或 UI 的自述。未执行的验证不得标记为通过。',
+        },
+        {
+          title: '显式生产操作',
+          desc: '生产合并与回滚都是显式用户操作。无单独获批的设计前，不添加自动生产合并或回滚。回滚调度记录完整审计事件。',
+        },
+        {
+          title: '实时 + 对账',
+          desc: 'Webhook 提供实时速度，定时对账保证正确性。Supabase 持久化工作流与监控状态，有序迁移是 schema 唯一事实来源。',
+        },
+        {
+          title: '凭据安全',
+          desc: 'GitHub App 密钥与短期安装令牌保留在服务端模块 api/_lib/ 下，永不暴露给浏览器。AI 密钥仅会话级，未设计加密前不持久化。',
+        },
+      ]
+    : [
+        {
+          title: 'GitHub is the authority',
+          desc: 'GitHub remains the authority for branch protection, reviews, checks, mergeability, Actions, and Environment protection. PR Helper never bypasses a GitHub rejection in UI state.',
+        },
+        {
+          title: 'Lane orchestration',
+          desc: 'A Lane contains linear stages, independent merge routes, dynamic source rules, and convergence gates. Dependent stages need predecessor merge + post-merge gates; independent routes need not wait for earlier linear stages.',
+        },
+        {
+          title: 'Real fact chain',
+          desc: 'Gate decisions are grounded in real GitHub Checks, Reviews, Mergeability, deployment records, and health checks — not Agent or UI self-report. Unexecuted verifications cannot be marked as passed.',
+        },
+        {
+          title: 'Explicit production actions',
+          desc: 'Production merge and rollback are explicit user actions. No automatic production merge or rollback is added without an approved design. Rollback dispatch records full audit events.',
+        },
+        {
+          title: 'Real-time + reconciliation',
+          desc: 'Webhooks provide real-time speed; scheduled reconciliation guarantees correctness. Supabase persists workflow and monitoring state; ordered migrations are the single source of truth for schema.',
+        },
+        {
+          title: 'Credential safety',
+          desc: 'GitHub App secrets and short-lived installation tokens stay behind server modules under api/_lib/, never exposed to the browser. AI keys are session-only and not persisted before encryption is designed.',
+        },
+      ];
+---
+
+<section id="features" class="border-t border-ink-800/60 bg-ink-900/30 py-20">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-3xl font-bold text-ink-50 sm:text-4xl">{t('diff.title')}</h2>
+      <p class="mt-3 text-ink-400">{t('diff.subtitle')}</p>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {features.map((f) => (
+        <blockquote class="rounded-xl border border-ink-800 bg-ink-900/60 p-6">
+          <h3 class="text-lg font-semibold text-ink-50">{f.title}</h3>
+          <p class="mt-3 text-sm leading-relaxed text-ink-300">{f.desc}</p>
+        </blockquote>
+      ))}
+    </div>
+  </div>
+</section>

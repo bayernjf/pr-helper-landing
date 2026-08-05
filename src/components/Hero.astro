@@ -1,0 +1,47 @@
+---
+import { useTranslations, localizePath, type Lang } from '../i18n';
+import { SOCIAL } from '../consts';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="relative overflow-hidden">
+  <!-- 背景渐变：暗色石墨蓝灰，非纯黑 -->
+  <div class="absolute inset-0 bg-gradient-to-b from-ink-900 via-ink-950 to-ink-950"></div>
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/40 to-transparent"></div>
+
+  <div class="relative mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 sm:py-32">
+    <span class="inline-flex items-center rounded-full border border-brand-500/30 bg-brand-500/10 px-3 py-1 font-mono text-xs uppercase tracking-wide text-brand-300">
+      {t('hero.badge')}
+    </span>
+
+    <h1 class="mt-6 text-4xl font-bold leading-tight tracking-tight text-ink-50 sm:text-5xl">
+      {t('hero.title')}
+    </h1>
+
+    <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-ink-300 sm:text-lg">
+      {t('hero.subtitle')}
+    </p>
+
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a
+        href={localizePath('/#workflow', lang)}
+        class="inline-flex w-full items-center justify-center rounded-lg bg-brand-500 px-6 py-3 text-sm font-medium text-white transition hover:bg-brand-600 sm:w-auto"
+      >
+        {t('hero.cta.primary')}
+      </a>
+      <a
+        href={SOCIAL.docs}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex w-full items-center justify-center rounded-lg border border-ink-700 px-6 py-3 text-sm font-medium text-ink-200 transition hover:border-ink-500 hover:text-white sm:w-auto"
+      >
+        {t('hero.cta.secondary')}
+      </a>
+    </div>
+  </div>
+</section>
