@@ -1,0 +1,26 @@
+---
+import PostLayout from '../../layouts/PostLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', (e) => e.data.lang === 'zh');
+  return posts.map((post) => ({
+    params: { slug: post.id.replace(/^zh\//, '') },
+    props: { post, slug: post.id.replace(/^zh\//, '') },
+  }));
+}
+
+const { post, slug } = Astro.props;
+const { Content } = await render(post);
+---
+
+<PostLayout
+  lang="zh"
+  title={post.data.title}
+  description={post.data.description}
+  pubDate={post.data.pubDate}
+  tags={post.data.tags}
+  slug={slug}
+>
+  <Content />
+</PostLayout>

@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Workflow from '../components/Workflow.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+import Boundary from '../components/Boundary.astro';
+import Principles from '../components/Principles.astro';
+import FAQ from '../components/FAQ.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+import { faqData } from '../data/faq';
+import { buildHowToSchema } from '../data/workflow';
+import { SITE_URL } from '../consts';
+
+const lang = 'zh' as const;
+const faqSchema = faqData[lang];
+const howToSchema = buildHowToSchema(lang, SITE_URL);
+---
+
+<BaseLayout lang={lang} faqSchema={faqSchema} extraSchema={howToSchema}>
+  <Nav lang={lang} />
+  <main>
+    <Hero lang={lang} />
+    <Workflow lang={lang} />
+    <FeatureGrid lang={lang} />
+    <ComparisonTable lang={lang} />
+    <Boundary lang={lang} />
+    <Principles lang={lang} />
+    <FAQ lang={lang} />
+    <CTA lang={lang} />
+  </main>
+  <Footer lang={lang} />
+</BaseLayout>
