@@ -1,0 +1,7 @@
+# Cloudflare Pages 部署配置
+# 项目名即默认子域名：pr-helper-landing.pages.dev
+# 绑定自定义域名后，同步修改 astro.config.mjs 的 site 与 src/consts.ts 的 SITE_URL
+
+name = "pr-helper-landing"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-08-05"
