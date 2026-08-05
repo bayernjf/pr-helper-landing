@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/* 设计令牌：暗色石墨蓝灰主题，避免纯黑，体现质感 */
+@theme {
+  --color-ink-50: #f5f7fa;
+  --color-ink-100: #e4e9f0;
+  --color-ink-200: #c8d2e0;
+  --color-ink-300: #a3b3c8;
+  --color-ink-400: #6b7d96;
+  --color-ink-500: #475569;
+  --color-ink-600: #334155;
+  --color-ink-700: #1e293b;
+  --color-ink-800: #141b2a;
+  --color-ink-900: #0d1320;
+  --color-ink-950: #080c16;
+
+  /* PR Helper 品牌色：靛蓝，区别于 Agent-Dev 的电光蓝 */
+  --color-brand-50: #eef2ff;
+  --color-brand-100: #e0e7ff;
+  --color-brand-200: #c7d2fe;
+  --color-brand-300: #a5b4fc;
+  --color-brand-400: #818cf8;
+  --color-brand-500: #6366f1;
+  --color-brand-600: #4f46e5;
+  --color-brand-700: #4338ca;
+  --color-brand-800: #3730a3;
+  --color-brand-900: #312e81;
+
+  --font-sans: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* 可引用内容块：提高 AI 搜索引用命中率 */
+blockquote {
+  border-left: 3px solid var(--color-brand-500);
+  padding-left: 1rem;
+  color: var(--color-ink-300);
+}
+
+/* 文章正文排版 */
+.prose { max-width: 72ch; }
+.prose h2 { font-size: 1.5rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 0.75rem; color: var(--color-ink-50); }
+.prose h3 { font-size: 1.2rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.5rem; color: var(--color-ink-50); }
+.prose p { margin: 0.85rem 0; color: var(--color-ink-300); line-height: 1.75; }
+.prose ul { margin: 0.85rem 0; padding-left: 1.25rem; list-style: disc; color: var(--color-ink-300); }
+.prose ol { margin: 0.85rem 0; padding-left: 1.25rem; list-style: decimal; color: var(--color-ink-300); }
+.prose li { margin: 0.35rem 0; }
+.prose a { color: var(--color-brand-300); text-decoration: underline; text-underline-offset: 2px; }
+.prose code { font-family: var(--font-mono); font-size: 0.875em; background: var(--color-ink-800); padding: 0.15em 0.4em; border-radius: 0.25rem; color: var(--color-brand-200); }
+.prose pre { background: var(--color-ink-900); border: 1px solid var(--color-ink-800); border-radius: 0.5rem; padding: 1rem; overflow-x: auto; margin: 1rem 0; }
+.prose pre code { background: transparent; padding: 0; color: var(--color-ink-200); }
+.prose table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.875rem; }
+.prose th, .prose td { border: 1px solid var(--color-ink-800); padding: 0.5rem 0.75rem; text-align: left; }
+.prose th { color: var(--color-ink-100); font-weight: 600; }
+.prose td { color: var(--color-ink-300); }

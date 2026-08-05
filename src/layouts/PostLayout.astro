@@ -1,0 +1,101 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { localizePath, type Lang } from '../i18n';
+import { SITE_URL, SITE_NAME, AUTHOR } from '../consts';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  pubDate: Date;
+  tags?: string[];
+  slug?: string;
+}
+
+const { lang, title, description, pubDate, tags, slug } = Astro.props;
+const dateStr = pubDate.toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+const backHref = localizePath('/blog', lang);
+
+// 文章 URL（用于 schema 与 canonical）
+const slugPath = slug ? `/blog/${slug}` : '';
+const articleUrl = `${SITE_URL.replace(/\/$/, '')}${localizePath(slugPath, lang)}`;
+
+// TechArticle schema：帮助 AI 识别为技术文章实体
+const techArticleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: title,
+  description: description,
+  author: { '@type': 'Organization', name: AUTHOR },
+  publisher: { '@type': 'Organization', name: SITE_NAME },
+  datePublished: pubDate.toISOString(),
+  dateModified: pubDate.toISOString(),
+  inLanguage: lang === 'zh' ? 'zh-CN' : 'en-US',
+  mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
+  keywords: tags?.join(', '),
+};
+
+// BreadcrumbList schema：面包屑导航结构化
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: lang === 'zh' ? '首页' : 'Home',
+      item: `${SITE_URL.replace(/\/$/, '')}${localizePath('/', lang)}`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: lang === 'zh' ? '博客' : 'Blog',
+      item: `${SITE_URL.replace(/\/$/, '')}${localizePath('/blog', lang)}`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: title,
+      item: articleUrl,
+    },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} lang={lang} extraSchema={[techArticleSchema, breadcrumbSchema]}>
+  <Nav lang={lang} />
+  <main class="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+    <nav aria-label="breadcrumb" class="text-sm text-ink-500">
+      <ol class="flex items-center gap-2">
+        <li><a href={localizePath('/', lang)} class="hover:text-ink-200">{lang === 'zh' ? '首页' : 'Home'}</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href={backHref} class="hover:text-ink-200">{lang === 'zh' ? '博客' : 'Blog'}</a></li>
+        <li aria-hidden="true">/</li>
+        <li class="text-ink-300" aria-current="page">{title}</li>
+      </ol>
+    </nav>
+    <article class="mt-6">
+      <h1 class="text-3xl font-bold text-ink-50 sm:text-4xl">{title}</h1>
+      <div class="mt-3 flex flex-wrap items-center gap-3 text-xs text-ink-500">
+        <time datetime={pubDate.toISOString()}>{dateStr}</time>
+        {tags && tags.length > 0 && (
+          <span class="flex gap-1">
+            {tags.map((tag) => (
+              <span class="rounded bg-ink-800 px-1.5 py-0.5 font-mono text-ink-400">#{tag}</span>
+            ))}
+          </span>
+        )}
+      </div>
+      <div class="prose mt-8">
+        <slot />
+      </div>
+    </article>
+  </main>
+  <Footer lang={lang} />
+</BaseLayout>
