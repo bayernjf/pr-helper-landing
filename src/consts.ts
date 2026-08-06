@@ -15,8 +15,8 @@ export const DEFAULT_LOCALE = 'zh';
 
 // 社交与外部链接（仓库地址部署后替换为真实地址）
 export const SOCIAL = {
-  github: 'https://github.com/your-org/pr-helper',
-  docs: 'https://github.com/your-org/pr-helper/tree/main/docs',
+  github: 'https://github.com/bayernjf/pr-helper',
+  docs: 'https://github.com/bayernjf/pr-helper/tree/main/docs',
   email: 'hello@pr-helper.pages.dev',
 };
 
