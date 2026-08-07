@@ -14,6 +14,8 @@ const links = [
   { href: SOCIAL.docs, label: t('nav.docs'), external: true },
   { href: SOCIAL.github, label: 'GitHub', external: true },
   { href: 'https://bayjf.com', label: 'BayJF', external: true },
+  { href: localizePath('/privacy', lang), label: lang === 'zh' ? '隐私政策' : 'Privacy' },
+  { href: localizePath('/terms', lang), label: lang === 'zh' ? '服务条款' : 'Terms' },
 ];
 ---
 
