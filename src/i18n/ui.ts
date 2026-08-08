@@ -71,7 +71,7 @@ export const ui = {
     'path.subtitle': 'The complete pipeline from PR intake to production rollback',
 
     'diff.title': 'Why PR Helper',
-    'diff.subtitle': 'Not a board, not a merge queue — accountability for the full release flow',
+    'diff.subtitle': 'Not a board, not a merge queue: accountability for the full release flow',
 
     'compare.title': 'Compared to adjacent products',
     'compare.subtitle': "PR Helper doesn't compete with GitHub Projects on tasks or Vercel on deploy speed",

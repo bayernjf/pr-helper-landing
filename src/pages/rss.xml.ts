@@ -9,7 +9,7 @@ export async function GET(context: APIContext) {
 
   return rss({
     title: 'PR Helper Blog',
-    description: 'GitHub-first PR / Release Control Tower — workflows, architecture, and Lane practices.',
+    description: 'GitHub-first PR / Release Control Tower: workflows, architecture, and Lane practices.',
     site: context.site ?? SITE_URL,
     items: sorted.map((post) => ({
       title: post.data.title,

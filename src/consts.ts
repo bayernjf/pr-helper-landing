@@ -4,7 +4,7 @@
 // Cloudflare Pages 默认域名：<project-name>.pages.dev
 export const SITE_URL = 'https://pr-helper-landing.pages.dev';
 export const SITE_NAME = 'PR Helper';
-export const SITE_TITLE = 'PR Helper — GitHub PR / Release Control Tower';
+export const SITE_TITLE = 'PR Helper | GitHub PR / Release Control Tower';
 export const SITE_DESCRIPTION =
   'PR Helper 是 GitHub 优先的 PR / Release 控制塔，跨仓库协调真实的 Pull Request 与部署工作流。一个 Lane 可包含线性阶段、独立合并路由、动态源规则与汇聚闸门，例如 feature/* + fix/* → dev → main。';
 export const SITE_DESCRIPTION_EN =
