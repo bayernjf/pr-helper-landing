@@ -19,3 +19,12 @@ PRHelper 产品落地页。Astro 7 静态站点，中英双语，部署于 Cloud
 1. `git push`（dev 分支，推送前可先 `git pull --rebase`）。
 2. 部署后验证 og:image、robots.txt、sitemap 可访问。
 3. 确认 Cloudflare Pages 自动部署正常触发。
+
+## taste-skill 设计审计（2026-08-08，本地未提交）
+按 taste-skill 反 AI-slop 方法论清理设计 Tell，仅动样式与文案，
+未改动内容 IA、URL、路由和功能逻辑。
+- 英文文案 em-dash 清扫：SEO 标题 `X — Brand` 统一为 `X | Brand`、404 标题改用冒号、
+  正文按语义改冒号/分号/逗号；中文“——”为规范破折号，保留未动。
+- `npm run build` 验证通过（11 页）。
+
+后续：审阅上述改动后按原子规则分批提交推送（英文 Conventional Commits）。
