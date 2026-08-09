@@ -32,7 +32,7 @@ export const ui = {
     'diff.subtitle': '不是看板，不是合并队列，而是对完整发布流程负责',
 
     'compare.title': '与相邻产品对比',
-    'compare.subtitle': 'PR Helper 不与 GitHub Projects 比任务管理，也不与 Vercel 比部署速度',
+    'compare.subtitle': 'PR Helper 不与任务看板工具比任务管理，也不与部署托管平台比部署速度',
 
     'boundary.title': '责任边界',
     'boundary.subtitle': '透明划分 GitHub 权威与编排层职责，建立信任',
@@ -74,7 +74,7 @@ export const ui = {
     'diff.subtitle': 'Not a board, not a merge queue: accountability for the full release flow',
 
     'compare.title': 'Compared to adjacent products',
-    'compare.subtitle': "PR Helper doesn't compete with GitHub Projects on tasks or Vercel on deploy speed",
+    'compare.subtitle': "PR Helper doesn't compete with task board tools on tasks or deploy platforms on deploy speed",
 
     'boundary.title': 'Responsibility Boundary',
     'boundary.subtitle': 'Transparent split between GitHub authority and the orchestration layer',
