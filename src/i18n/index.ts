@@ -6,7 +6,7 @@ export type Lang = keyof typeof ui;
 
 export { ui, defaultLang, languages };
 
-// 从 URL 路径推断当前语言：/en/... 返回 en，其余返回默认 zh
+// 从 URL 路径推断当前语言：/zh/... 返回 zh，其余返回默认 en
 export function getLangFromUrl(url: URL): Lang {
   const [, lang] = url.pathname.split('/');
   if (lang in ui) return lang as Lang;
@@ -20,7 +20,7 @@ export function useTranslations(lang: Lang) {
   };
 }
 
-// 生成相对本地化路径：zh -> /about，en -> /en/about
+// 生成相对本地化路径：en -> /about，zh -> /zh/about
 export function localizePath(path: string, lang: Lang = defaultLang): string {
   const clean = path.startsWith('/') ? path : `/${path}`;
   if (lang === defaultLang) return clean;

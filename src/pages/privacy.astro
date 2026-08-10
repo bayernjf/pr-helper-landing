@@ -4,66 +4,65 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_NAME, SOCIAL } from '../consts';
 
-const lang = 'zh' as const;
-const title = `隐私政策 | ${SITE_NAME}`;
-const description = `${SITE_NAME} 隐私政策：我们如何对待你的信息与隐私。`;
+const lang = 'en' as const;
+const title = `Privacy Policy | ${SITE_NAME}`;
+const description = `Privacy Policy of ${SITE_NAME}: how we handle information related to your visit.`;
 ---
 
 <BaseLayout lang={lang} title={title} description={description}>
   <Nav lang={lang} />
   <main class="mx-auto max-w-3xl px-4 py-16 sm:px-6">
-    <h1 class="text-3xl font-bold text-ink-50">隐私政策</h1>
-    <p class="mt-2 text-sm text-ink-500">最后更新：2026 年 8 月 7 日</p>
+    <h1 class="text-3xl font-bold text-ink-50">Privacy Policy</h1>
+    <p class="mt-2 text-sm text-ink-500">Last updated: August 7, 2026</p>
 
     <div class="mt-8 space-y-8 text-sm leading-7 text-ink-300">
       <section>
-        <h2 class="text-lg font-semibold text-ink-100">1. 概述</h2>
+        <h2 class="text-lg font-semibold text-ink-100">1. Overview</h2>
         <p class="mt-2">
-          {SITE_NAME}（下称「本站」）是一个产品介绍站点。我们尊重并保护访问者的隐私，本政策说明本站如何处理与你访问相关的信息。使用本站即表示你同意本政策的约定。
+          {SITE_NAME} (the "Site") is a product introduction website. We respect and protect the privacy of our visitors. This policy explains how information related to your visit is handled. By using the Site you agree to the terms of this policy.
         </p>
       </section>
 
       <section>
-        <h2 class="text-lg font-semibold text-ink-100">2. 我们收集的信息</h2>
+        <h2 class="text-lg font-semibold text-ink-100">2. Information We Handle</h2>
         <ul class="mt-2 list-disc space-y-1 pl-5">
-          <li>本站为静态站点，不提供账号注册，不主动收集姓名、邮箱等个人身份信息。</li>
-          <li>访问站点时，托管平台（如 Cloudflare Pages）可能按其自身政策记录基础访问日志（IP、User-Agent 等），该过程不受本站控制。</li>
-          <li>若本站后续启用统计分析，仅使用匿名化的访问统计（页面浏览量、来源等），不用于识别个人身份。</li>
+          <li>The Site is static, offers no account registration, and does not actively collect personally identifiable information such as names or email addresses.</li>
+          <li>The hosting platform (e.g. Cloudflare Pages) may record basic access logs (IP, User-Agent, etc.) under its own policies, outside our control.</li>
+          <li>If analytics are enabled in the future, only anonymized usage statistics (page views, referrers, etc.) will be used, never to identify individuals.</li>
         </ul>
       </section>
 
       <section>
-        <h2 class="text-lg font-semibold text-ink-100">3. Cookie 与本地存储</h2>
+        <h2 class="text-lg font-semibold text-ink-100">3. Cookies & Local Storage</h2>
         <p class="mt-2">
-          本站可能使用浏览器的 Cookie 或 localStorage 保存语言偏好等界面设置，仅用于改善浏览体验，不用于跨站追踪。你可以在浏览器设置中禁用或删除这些数据。
+          The Site may use browser cookies or localStorage to remember interface preferences such as language. These are used solely to improve browsing and never for cross-site tracking. You can disable or clear them in your browser settings.
         </p>
       </section>
 
       <section>
-        <h2 class="text-lg font-semibold text-ink-100">4. 第三方链接</h2>
+        <h2 class="text-lg font-semibold text-ink-100">4. Third-Party Links</h2>
         <p class="mt-2">
-          本站包含指向 GitHub 等第三方网站的链接。第三方站点的隐私实践与本站无关，请查阅其各自的隐私政策。
+          The Site contains links to third-party websites such as GitHub. Their privacy practices are not covered by this policy; please refer to their own policies.
         </p>
       </section>
 
       <section>
-        <h2 class="text-lg font-semibold text-ink-100">5. 未成年人</h2>
-        <p class="mt-2">本站不面向 14 周岁以下儿童，也不会有意收集其个人信息。</p>
+        <h2 class="text-lg font-semibold text-ink-100">5. Children</h2>
+        <p class="mt-2">The Site is not directed at children under 14, and we do not knowingly collect personal information from them.</p>
       </section>
 
       <section>
-        <h2 class="text-lg font-semibold text-ink-100">6. 政策变更</h2>
+        <h2 class="text-lg font-semibold text-ink-100">6. Changes</h2>
         <p class="mt-2">
-          本政策可能随产品演进更新，变更将在本页发布并更新「最后更新」日期。重大变更建议定期查阅本页。
+          This policy may be updated as the product evolves. Changes will be posted on this page with an updated revision date.
         </p>
       </section>
 
       <section>
-        <h2 class="text-lg font-semibold text-ink-100">7. 联系我们</h2>
+        <h2 class="text-lg font-semibold text-ink-100">7. Contact</h2>
         <p class="mt-2">
-          如对本政策有任何疑问，请通过
-          <a href={SOCIAL.github} class="text-brand-400 hover:text-brand-300">GitHub 仓库</a>
-          的 Issues 与我们联系。
+          Questions about this policy can be raised via Issues on our
+          <a href={SOCIAL.github} class="text-brand-400 hover:text-brand-300">GitHub repository</a>.
         </p>
       </section>
     </div>

@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_NAME, SOCIAL } from '../../consts';
+
+const lang = 'zh' as const;
+const title = `隐私政策 | ${SITE_NAME}`;
+const description = `${SITE_NAME} 隐私政策：我们如何对待你的信息与隐私。`;
+---
+
+<BaseLayout lang={lang} title={title} description={description}>
+  <Nav lang={lang} />
+  <main class="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+    <h1 class="text-3xl font-bold text-ink-50">隐私政策</h1>
+    <p class="mt-2 text-sm text-ink-500">最后更新：2026 年 8 月 7 日</p>
+
+    <div class="mt-8 space-y-8 text-sm leading-7 text-ink-300">
+      <section>
+        <h2 class="text-lg font-semibold text-ink-100">1. 概述</h2>
+        <p class="mt-2">
+          {SITE_NAME}（下称「本站」）是一个产品介绍站点。我们尊重并保护访问者的隐私，本政策说明本站如何处理与你访问相关的信息。使用本站即表示你同意本政策的约定。
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-ink-100">2. 我们收集的信息</h2>
+        <ul class="mt-2 list-disc space-y-1 pl-5">
+          <li>本站为静态站点，不提供账号注册，不主动收集姓名、邮箱等个人身份信息。</li>
+          <li>访问站点时，托管平台（如 Cloudflare Pages）可能按其自身政策记录基础访问日志（IP、User-Agent 等），该过程不受本站控制。</li>
+          <li>若本站后续启用统计分析，仅使用匿名化的访问统计（页面浏览量、来源等），不用于识别个人身份。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-ink-100">3. Cookie 与本地存储</h2>
+        <p class="mt-2">
+          本站可能使用浏览器的 Cookie 或 localStorage 保存语言偏好等界面设置，仅用于改善浏览体验，不用于跨站追踪。你可以在浏览器设置中禁用或删除这些数据。
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-ink-100">4. 第三方链接</h2>
+        <p class="mt-2">
+          本站包含指向 GitHub 等第三方网站的链接。第三方站点的隐私实践与本站无关，请查阅其各自的隐私政策。
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-ink-100">5. 未成年人</h2>
+        <p class="mt-2">本站不面向 14 周岁以下儿童，也不会有意收集其个人信息。</p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-ink-100">6. 政策变更</h2>
+        <p class="mt-2">
+          本政策可能随产品演进更新，变更将在本页发布并更新「最后更新」日期。重大变更建议定期查阅本页。
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-ink-100">7. 联系我们</h2>
+        <p class="mt-2">
+          如对本政策有任何疑问，请通过
+          <a href={SOCIAL.github} class="text-brand-400 hover:text-brand-300">GitHub 仓库</a>
+          的 Issues 与我们联系。
+        </p>
+      </section>
+    </div>
+  </main>
+  <Footer lang={lang} />
+</BaseLayout>

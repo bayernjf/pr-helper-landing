@@ -7,7 +7,7 @@ PR Helper 落地页 — GitHub 优先的 PR / Release 控制塔。Astro + Tailwi
 - Astro 7（纯静态输出，无前端框架）
 - Tailwind CSS 4（via `@tailwindcss/vite`）
 - `@astrojs/sitemap` + `@astrojs/rss`
-- 中英双语 i18n（默认 zh 无前缀，en 走 `/en/`）
+- 中英双语 i18n（默认 en 无前缀，zh 走 `/zh/`）
 
 ## 本地开发
 
@@ -63,7 +63,7 @@ src/
   data/         faq.ts, workflow.ts（单一数据源，供组件与 schema 复用）
   i18n/         ui.ts（字典）, index.ts（工具）
   layouts/      BaseLayout.astro, PostLayout.astro
-  pages/        index, en/index, blog, en/blog, rss.xml, 404
+  pages/        index, zh/index, blog, zh/blog, rss.xml, 404
   content/blog/ zh/, en/（MDX/MD 文章）
   consts.ts     站点常量
   styles/global.css
