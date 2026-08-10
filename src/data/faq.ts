@@ -39,9 +39,9 @@ export const faqData: Record<'zh' | 'en', FaqItem[]> = {
         'Lane 是一个项目编排单元，包含线性阶段、独立合并路由、动态源规则与汇聚闸门。依赖阶段必须等所有前置阶段合并且其后置检查/部署闸门成功后才能推进；独立路由无需等待更早的线性阶段即可推进。',
     },
     {
-      question: 'PR Helper 与 GitHub Projects / MergeQueue / Vercel 有什么区别？',
+      question: 'PR Helper 与任务看板工具、合并队列工具、部署托管平台有什么区别？',
       answer:
-        'GitHub Projects 管任务，MergeQueue 管 PR 合并顺序，Vercel 管部署托管。PR Helper 管理跨仓库的完整发布工作流：用 Lane 编排 PR 流入、闸门决策、阶段推进、部署追踪、健康检查与确认回滚，并以 GitHub 事实为唯一依据。',
+        '任务看板工具管任务，合并队列工具管 PR 合并顺序，部署托管平台管部署。PR Helper 管理跨仓库的完整发布工作流：用 Lane 编排 PR 流入、闸门决策、阶段推进、部署追踪、健康检查与确认回滚，并以仓库事实为唯一依据。',
     },
   ],
   en: [
@@ -76,9 +76,9 @@ export const faqData: Record<'zh' | 'en', FaqItem[]> = {
         'A Lane is a project orchestration unit containing linear stages, independent merge routes, dynamic source rules, and convergence gates. A dependent stage advances only after all predecessor stages merge and their post-merge check/deployment gates succeed; independent routes may proceed without an earlier linear stage.',
     },
     {
-      question: 'How is PR Helper different from GitHub Projects, MergeQueue, or Vercel?',
+      question: 'How is PR Helper different from task board tools, merge queue tools, or deploy platforms?',
       answer:
-        'GitHub Projects manages tasks, MergeQueue manages PR merge ordering, and Vercel manages deploy hosting. PR Helper manages the full cross-repo release workflow: Lanes orchestrate PR intake, gate decisions, stage advance, deployment tracking, health checks, and confirmed rollback, grounded in GitHub facts.',
+        'Task board tools manage tasks, merge queue tools manage PR merge ordering, and deploy platforms manage hosting. PR Helper manages the full cross-repo release workflow: Lanes orchestrate PR intake, gate decisions, stage advance, deployment tracking, health checks, and confirmed rollback, grounded in repository facts.',
     },
   ],
 };

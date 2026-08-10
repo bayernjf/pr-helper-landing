@@ -9,25 +9,26 @@ const t = useTranslations(lang);
 
 const isZh = lang === 'zh';
 
-// 对比维度：聚焦 PR Helper 的差异化——跨仓库发布工作流编排
+// 对比维度：聚焦 PR Helper 的差异化——跨仓库发布工作流编排。
+// 对比对象用匿名分类名，不点名任何第三方产品。
 const rows =
   isZh
     ? [
         { dim: '管理单位', ph: '跨仓库发布工作流', projects: '任务/issue', mergequeue: 'PR 合并顺序', vercel: '部署托管', manual: '电子表格/IM' },
-        { dim: 'GitHub 原生', ph: '是，GitHub App + Webhook', projects: '是', mergequeue: '是', vercel: '部分', manual: '否' },
+        { dim: '平台原生', ph: '是，原生 App + Webhook', projects: '是', mergequeue: '是', vercel: '部分', manual: '否' },
         { dim: '跨仓库 Lane', ph: '是，线性/独立/汇聚', projects: '有限', mergequeue: '否', vercel: '否', manual: '临时拼凑' },
         { dim: '汇聚闸门', ph: '是', projects: '否', mergequeue: '否', vercel: '否', manual: '人工核对' },
-        { dim: '闸门决策来源', ph: 'GitHub 事实链', projects: 'issue 状态', mergequeue: '合并队列状态', vercel: '部署状态', manual: '人工判断' },
+        { dim: '闸门决策来源', ph: '仓库事实链', projects: 'issue 状态', mergequeue: '合并队列状态', vercel: '部署状态', manual: '人工判断' },
         { dim: 'Web Push 送达', ph: '是，关闭标签页', projects: '有限', mergequeue: '否', vercel: '有限', manual: '否' },
         { dim: '确认回滚', ph: '显式用户操作 + 审计', projects: '否', mergequeue: '否', vercel: '即时回滚', manual: '人工回滚' },
         { dim: 'AI PR 草稿', ph: '是，24h + 流式', projects: '否', mergequeue: '否', vercel: '否', manual: '否' },
       ]
     : [
         { dim: 'Unit managed', ph: 'Cross-repo release workflow', projects: 'Tasks/issues', mergequeue: 'PR merge order', vercel: 'Deploy hosting', manual: 'Spreadsheets/IM' },
-        { dim: 'GitHub-native', ph: 'Yes, GitHub App + Webhook', projects: 'Yes', mergequeue: 'Yes', vercel: 'Partial', manual: 'No' },
+        { dim: 'Platform-native', ph: 'Yes, native app + webhook', projects: 'Yes', mergequeue: 'Yes', vercel: 'Partial', manual: 'No' },
         { dim: 'Cross-repo Lane', ph: 'Yes, linear/independent/convergence', projects: 'Limited', mergequeue: 'No', vercel: 'No', manual: 'Ad hoc' },
         { dim: 'Convergence gate', ph: 'Yes', projects: 'No', mergequeue: 'No', vercel: 'No', manual: 'Manual check' },
-        { dim: 'Gate decision source', ph: 'GitHub fact chain', projects: 'Issue status', mergequeue: 'Queue status', vercel: 'Deploy status', manual: 'Human judgment' },
+        { dim: 'Gate decision source', ph: 'Repo fact chain', projects: 'Issue status', mergequeue: 'Queue status', vercel: 'Deploy status', manual: 'Human judgment' },
         { dim: 'Web Push delivery', ph: 'Yes, closed-tab', projects: 'Limited', mergequeue: 'No', vercel: 'Limited', manual: 'No' },
         { dim: 'Confirmed rollback', ph: 'Explicit user action + audit', projects: 'No', mergequeue: 'No', vercel: 'Instant rollback', manual: 'Manual rollback' },
         { dim: 'AI PR drafts', ph: 'Yes, 24h + streaming', projects: 'No', mergequeue: 'No', vercel: 'No', manual: 'No' },
@@ -37,23 +38,23 @@ const cols = isZh
   ? [
       { key: 'dim', label: '维度' },
       { key: 'ph', label: 'PR Helper' },
-      { key: 'projects', label: 'GitHub Projects' },
-      { key: 'mergequeue', label: 'MergeQueue' },
-      { key: 'vercel', label: 'Vercel' },
+      { key: 'projects', label: '任务看板工具' },
+      { key: 'mergequeue', label: '合并队列工具' },
+      { key: 'vercel', label: '部署托管平台' },
       { key: 'manual', label: '人工协调' },
     ]
   : [
       { key: 'dim', label: 'Dimension' },
       { key: 'ph', label: 'PR Helper' },
-      { key: 'projects', label: 'GitHub Projects' },
-      { key: 'mergequeue', label: 'MergeQueue' },
-      { key: 'vercel', label: 'Vercel' },
+      { key: 'projects', label: 'Task board tools' },
+      { key: 'mergequeue', label: 'Merge queue tools' },
+      { key: 'vercel', label: 'Deploy platforms' },
       { key: 'manual', label: 'Manual' },
     ];
 
 const caption = isZh
-  ? 'PR Helper 与 GitHub Projects、MergeQueue、Vercel、人工协调的能力对比'
-  : 'PR Helper vs GitHub Projects, MergeQueue, Vercel, and manual coordination';
+  ? 'PR Helper 与任务看板工具、合并队列工具、部署托管平台、人工协调的能力对比'
+  : 'PR Helper vs task board tools, merge queue tools, deploy platforms, and manual coordination';
 ---
 
 <section id="comparison" aria-label={t('compare.title')} class="border-t border-ink-800/60 bg-ink-950 py-20">

@@ -8,7 +8,7 @@ tags: ["lane", "workflow", "architecture"]
 
 ## Why Lanes
 
-The hard part of cross-repo release is not whether a single PR can merge — it is the ordering and dependencies between many PRs, branches, and environments. Spreadsheets and chat notifications drift. A pure merge queue solves "who merges first" but not "who waits for whom".
+The hard part of cross-repo release is not whether a single PR can merge; it is the ordering and dependencies between many PRs, branches, and environments. Spreadsheets and chat notifications drift. A pure merge queue solves "who merges first" but not "who waits for whom".
 
 PR Helper's Lane makes this explicit: a Lane contains linear stages, independent merge routes, dynamic source rules, and convergence gates.
 
@@ -25,7 +25,7 @@ feature/* + fix/* → dev → main
 
 ## What gates are based on
 
-Gates are not PR Helper's self-report — they come from a GitHub fact chain: Checks, Reviews, Mergeability, deployment records, health checks. `src/lib/domain.ts` is the source of truth for gate decisions; ad-hoc recomputation in DOM handlers is not allowed.
+Gates are not PR Helper's self-report; they come from a GitHub fact chain: Checks, Reviews, Mergeability, deployment records, health checks. `src/lib/domain.ts` is the source of truth for gate decisions; ad-hoc recomputation in DOM handlers is not allowed.
 
 ## Stage advance rules
 

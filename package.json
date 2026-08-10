@@ -7,15 +7,20 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/shot.mjs",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "shot": "node scripts/shot.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
+    "@bay/landing-ui": "github:bayernjf/landing-ui#v1.1.0",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.1.6",
     "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "playwright": "^1.62.1"
   }
 }
