@@ -11,7 +11,7 @@ export const SITE_DESCRIPTION_EN =
   'PR Helper is a GitHub-first PR / Release Control Tower that coordinates real pull-request and deployment workflows across repositories. A Lane can contain linear stages, independent merge routes, dynamic source rules, and convergence gates, e.g. feature/* + fix/* → dev → main.';
 export const AUTHOR = 'PR Helper';
 export const LOCALES = ['zh', 'en'] as const;
-export const DEFAULT_LOCALE = 'zh';
+export const DEFAULT_LOCALE = 'en';
 
 // 社交与外部链接（仓库地址部署后替换为真实地址）
 export const SOCIAL = {

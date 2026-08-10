@@ -15,7 +15,7 @@ export async function GET(context: APIContext) {
       title: post.data.title,
       description: post.data.description,
       pubDate: post.data.pubDate,
-      link: post.data.lang === 'en' ? `/en/blog/${post.id.replace(/^en\//, '')}/` : `/blog/${post.id.replace(/^zh\//, '')}/`,
+      link: post.data.lang === 'en' ? `/blog/${post.id.replace(/^en\//, '')}/` : `/zh/blog/${post.id.replace(/^zh\//, '')}/`,
     })),
   });
 }

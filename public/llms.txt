@@ -35,11 +35,11 @@ PR Helper 属于 GitHub 优先的 PR / Release 控制塔。GitHub 始终是分�
 
 ## 关键链接
 
-- [中文首页](https://pr-helper-landing.pages.dev/)
-- [English Home](https://pr-helper-landing.pages.dev/en/)
-- [Lane 工作流](https://pr-helper-landing.pages.dev/#workflow)
-- [产品宪法](https://pr-helper-landing.pages.dev/#principles)
-- [常见问题](https://pr-helper-landing.pages.dev/#faq)
-- [博客](https://pr-helper-landing.pages.dev/blog)
+- [中文首页](https://pr-helper-landing.pages.dev/zh/)
+- [English Home](https://pr-helper-landing.pages.dev/)
+- [Lane 工作流](https://pr-helper-landing.pages.dev/zh/#workflow)
+- [产品宪法](https://pr-helper-landing.pages.dev/zh/#principles)
+- [常见问题](https://pr-helper-landing.pages.dev/zh/#faq)
+- [博客](https://pr-helper-landing.pages.dev/zh/blog)
 - [文档](https://github.com/your-org/pr-helper/tree/main/docs)
 - [RSS 订阅](https://pr-helper-landing.pages.dev/rss.xml)

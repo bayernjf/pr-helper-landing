@@ -35,11 +35,11 @@ PR Helper is a GitHub-first PR / Release Control Tower. GitHub remains the autho
 
 ## Key links
 
-- [English Home](https://pr-helper-landing.pages.dev/en/)
-- [中文首页](https://pr-helper-landing.pages.dev/)
-- [Lane workflow](https://pr-helper-landing.pages.dev/en/#workflow)
-- [Product constitution](https://pr-helper-landing.pages.dev/en/#principles)
-- [FAQ](https://pr-helper-landing.pages.dev/en/#faq)
-- [Blog](https://pr-helper-landing.pages.dev/en/blog)
+- [English Home](https://pr-helper-landing.pages.dev/)
+- [中文首页](https://pr-helper-landing.pages.dev/zh/)
+- [Lane workflow](https://pr-helper-landing.pages.dev/#workflow)
+- [Product constitution](https://pr-helper-landing.pages.dev/#principles)
+- [FAQ](https://pr-helper-landing.pages.dev/#faq)
+- [Blog](https://pr-helper-landing.pages.dev/blog)
 - [Docs](https://github.com/your-org/pr-helper/tree/main/docs)
 - [RSS](https://pr-helper-landing.pages.dev/rss.xml)
