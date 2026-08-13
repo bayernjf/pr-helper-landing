@@ -1,4 +1,5 @@
 ---
+import BayjfLink from '@bay/landing-ui/components/BayjfLink.astro';
 import { useTranslations, localizePath, type Lang } from '../i18n';
 import { SITE_NAME, SOCIAL } from '../consts';
 
@@ -51,12 +52,20 @@ const links = [
 
       <nav class="flex flex-wrap items-center justify-center gap-5">
         {links.map((l) => (
-          <a
-            href={l.href}
-            class="text-xs text-ink-400 transition hover:text-ink-100"
-          >
-            {l.label}
-          </a>
+          l.href === 'https://bayjf.com' ? (
+            <BayjfLink
+              size={16}
+              class="text-xs text-ink-400 transition hover:text-ink-100"
+              label={l.label}
+            />
+          ) : (
+            <a
+              href={l.href}
+              class="text-xs text-ink-400 transition hover:text-ink-100"
+            >
+              {l.label}
+            </a>
+          )
         ))}
       </nav>
     </div>
