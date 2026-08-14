@@ -1,5 +1,6 @@
 ---
 import BayjfLink from '@bay/landing-ui/components/BayjfLink.astro';
+import StarOnGithub from '@bay/landing-ui/components/StarOnGithub.astro';
 import { useTranslations, localizePath, type Lang } from '../i18n';
 import { SITE_NAME, SOCIAL } from '../consts';
 
@@ -13,8 +14,8 @@ const year = new Date().getFullYear();
 const links = [
   { href: localizePath('/blog', lang), label: t('nav.blog') },
   { href: SOCIAL.docs, label: t('nav.docs'), external: true },
-  { href: SOCIAL.github, label: 'GitHub', external: true },
   { href: 'https://bayjf.com', label: 'BayJF', external: true },
+  { href: SOCIAL.github, label: 'GitHub', external: true },
   { href: localizePath('/privacy', lang), label: lang === 'zh' ? '隐私政策' : 'Privacy' },
   { href: localizePath('/terms', lang), label: lang === 'zh' ? '服务条款' : 'Terms' },
 ];
@@ -58,6 +59,8 @@ const links = [
               class="text-xs text-ink-400 transition hover:text-ink-100"
               label={l.label}
             />
+          ) : l.href === SOCIAL.github ? (
+            <StarOnGithub href={SOCIAL.github} size={14} class="text-ink-400" />
           ) : (
             <a
               href={l.href}
