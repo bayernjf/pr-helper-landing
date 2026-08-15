@@ -18,10 +18,12 @@ export const ui = {
     'nav.blog': '博客',
     'nav.docs': '文档',
     'nav.langSwitch': 'English',
+    'nav.openApp': '打开应用',
 
     'hero.badge': 'GitHub PR / Release Control Tower',
     'hero.title': '跨仓库的 PR 与发布，一个控制塔搞定',
     'hero.subtitle': 'PR Helper 用 Lane 编排真实的 GitHub PR 与部署工作流。线性阶段、独立合并路由、动态源规则与汇聚闸门，例如 feature/* + fix/* → dev → main。GitHub 始终是分支保护、评审、检查与部署的权威。',
+    'hero.cta.app': '打开应用',
     'hero.cta.primary': '查看工作流',
     'hero.cta.secondary': '阅读文档',
 
@@ -45,6 +47,7 @@ export const ui = {
 
     'cta.title': '把跨仓库发布从混乱变成可控',
     'cta.subtitle': '用 Lane 编排真实的 GitHub PR、检查、部署与回滚',
+    'cta.app': '打开应用',
     'cta.button': '了解工作流',
 
     'footer.tagline': 'GitHub PR / Release Control Tower',
@@ -60,10 +63,12 @@ export const ui = {
     'nav.blog': 'Blog',
     'nav.docs': 'Docs',
     'nav.langSwitch': '简体中文',
+    'nav.openApp': 'Open the app',
 
     'hero.badge': 'GitHub PR / Release Control Tower',
     'hero.title': 'Cross-repo PR and release, from one control tower',
     'hero.subtitle': 'PR Helper orchestrates real GitHub PR and deployment workflows with Lanes. Linear stages, independent merge routes, dynamic source rules, and convergence gates, e.g. feature/* + fix/* → dev → main. GitHub remains the authority for branch protection, reviews, checks, and deployments.',
+    'hero.cta.app': 'Open the app',
     'hero.cta.primary': 'View the workflow',
     'hero.cta.secondary': 'Read the docs',
 
@@ -87,6 +92,7 @@ export const ui = {
 
     'cta.title': 'Turn cross-repo releases from chaos into control',
     'cta.subtitle': 'Orchestrate real GitHub PRs, checks, deployments, and rollbacks with Lanes',
+    'cta.app': 'Open the app',
     'cta.button': 'Explore the workflow',
 
     'footer.tagline': 'GitHub PR / Release Control Tower',

@@ -1,6 +1,6 @@
 ---
 import { useTranslations, localizePath, type Lang } from '../i18n';
-import { SOCIAL } from '../consts';
+import { SOCIAL, APP_URL } from '../consts';
 
 interface Props {
   lang: Lang;
@@ -29,8 +29,21 @@ const t = useTranslations(lang);
 
     <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
       <a
+        href={APP_URL}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-brand-500 px-6 py-3 text-sm font-medium text-white transition hover:bg-brand-600 sm:w-auto"
+      >
+        {t('hero.cta.app')}
+        <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M11 3h6v6" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M17 3l-8 8" stroke-linecap="round" />
+          <path d="M15 12.5V16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h3.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+      <a
         href={localizePath('/#workflow', lang)}
-        class="inline-flex w-full items-center justify-center rounded-lg bg-brand-500 px-6 py-3 text-sm font-medium text-white transition hover:bg-brand-600 sm:w-auto"
+        class="inline-flex w-full items-center justify-center rounded-lg border border-ink-700 px-6 py-3 text-sm font-medium text-ink-200 transition hover:border-ink-500 hover:text-white sm:w-auto"
       >
         {t('hero.cta.primary')}
       </a>
@@ -38,7 +51,7 @@ const t = useTranslations(lang);
         href={SOCIAL.docs}
         target="_blank"
         rel="noopener"
-        class="inline-flex w-full items-center justify-center rounded-lg border border-ink-700 px-6 py-3 text-sm font-medium text-ink-200 transition hover:border-ink-500 hover:text-white sm:w-auto"
+        class="inline-flex w-full items-center justify-center px-6 py-3 text-sm font-medium text-ink-300 transition hover:text-white sm:w-auto"
       >
         {t('hero.cta.secondary')}
       </a>
