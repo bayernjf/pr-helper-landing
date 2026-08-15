@@ -17,7 +17,7 @@ export const DEFAULT_LOCALE = 'en';
 export const SOCIAL = {
   github: 'https://github.com/bayernjf/pr-helper',
   docs: 'https://github.com/bayernjf/pr-helper/tree/main/docs',
-  email: 'hello@pr-helper.pages.dev',
+  email: 'b4yernjf@gmail.com',
 };
 
 // 默认 OG 图片
