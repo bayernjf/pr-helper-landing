@@ -2,7 +2,7 @@
 import BayjfLink from '@bay/landing-ui/components/BayjfLink.astro';
 import StarOnGithub from '@bay/landing-ui/components/StarOnGithub.astro';
 import { useTranslations, localizePath, getAltLangPath, type Lang } from '../i18n';
-import { SITE_NAME, SOCIAL } from '../consts';
+import { SITE_NAME, SOCIAL, APP_URL } from '../consts';
 
 interface Props {
   lang: Lang;
@@ -70,6 +70,14 @@ const altLangHref = getAltLangPath(Astro.url.pathname, altLang);
       </a>
       <BayjfLink size={18} class="hidden rounded-md px-2 py-1.5 text-xs text-ink-300 transition hover:text-ink-50 sm:inline-block" />
       <StarOnGithub href={SOCIAL.github} size={15} class="hidden text-ink-300 sm:inline-flex" />
+      <a
+        href={APP_URL}
+        target="_blank"
+        rel="noopener"
+        class="rounded-md bg-brand-500 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-brand-600"
+      >
+        {t('nav.openApp')}
+      </a>
     </div>
   </nav>
 </header>

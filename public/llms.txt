@@ -5,8 +5,8 @@
 ## 完整文档
 
 完整可引用内容（含责任边界、产品宪法、Lane 工作流、对比表、FAQ 全文）：
-- [llms-full.txt（中文完整版）](https://pr-helper-landing.pages.dev/llms-full.txt)
-- [llms-en-full.txt（English full docs）](https://pr-helper-landing.pages.dev/llms-en-full.txt)
+- [llms-full.txt（中文完整版）](https://pr-helper.bayjf.com/llms-full.txt)
+- [llms-en-full.txt（English full docs）](https://pr-helper.bayjf.com/llms-en-full.txt)
 
 ## 产品定义（摘要）
 
@@ -35,11 +35,11 @@ PR Helper 属于 GitHub 优先的 PR / Release 控制塔。GitHub 始终是分�
 
 ## 关键链接
 
-- [中文首页](https://pr-helper-landing.pages.dev/zh/)
-- [English Home](https://pr-helper-landing.pages.dev/)
-- [Lane 工作流](https://pr-helper-landing.pages.dev/zh/#workflow)
-- [产品宪法](https://pr-helper-landing.pages.dev/zh/#principles)
-- [常见问题](https://pr-helper-landing.pages.dev/zh/#faq)
-- [博客](https://pr-helper-landing.pages.dev/zh/blog)
+- [中文首页](https://pr-helper.bayjf.com/zh/)
+- [English Home](https://pr-helper.bayjf.com/)
+- [Lane 工作流](https://pr-helper.bayjf.com/zh/#workflow)
+- [产品宪法](https://pr-helper.bayjf.com/zh/#principles)
+- [常见问题](https://pr-helper.bayjf.com/zh/#faq)
+- [博客](https://pr-helper.bayjf.com/zh/blog)
 - [文档](https://github.com/your-org/pr-helper/tree/main/docs)
-- [RSS 订阅](https://pr-helper-landing.pages.dev/rss.xml)
+- [RSS 订阅](https://pr-helper.bayjf.com/rss.xml)
