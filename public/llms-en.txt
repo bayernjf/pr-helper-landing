@@ -5,8 +5,8 @@
 ## Full docs
 
 Full citable content (responsibility boundary, product constitution, Lane workflow, comparison table, full FAQ):
-- [llms-en-full.txt (English full docs)](https://pr-helper-landing.pages.dev/llms-en-full.txt)
-- [llms-full.txt (中文完整版)](https://pr-helper-landing.pages.dev/llms-full.txt)
+- [llms-en-full.txt (English full docs)](https://pr-helper.bayjf.com/llms-en-full.txt)
+- [llms-full.txt (中文完整版)](https://pr-helper.bayjf.com/llms-full.txt)
 
 ## Product definition (summary)
 
@@ -35,11 +35,11 @@ PR Helper is a GitHub-first PR / Release Control Tower. GitHub remains the autho
 
 ## Key links
 
-- [English Home](https://pr-helper-landing.pages.dev/)
-- [中文首页](https://pr-helper-landing.pages.dev/zh/)
-- [Lane workflow](https://pr-helper-landing.pages.dev/#workflow)
-- [Product constitution](https://pr-helper-landing.pages.dev/#principles)
-- [FAQ](https://pr-helper-landing.pages.dev/#faq)
-- [Blog](https://pr-helper-landing.pages.dev/blog)
+- [English Home](https://pr-helper.bayjf.com/)
+- [中文首页](https://pr-helper.bayjf.com/zh/)
+- [Lane workflow](https://pr-helper.bayjf.com/#workflow)
+- [Product constitution](https://pr-helper.bayjf.com/#principles)
+- [FAQ](https://pr-helper.bayjf.com/#faq)
+- [Blog](https://pr-helper.bayjf.com/blog)
 - [Docs](https://github.com/your-org/pr-helper/tree/main/docs)
-- [RSS](https://pr-helper-landing.pages.dev/rss.xml)
+- [RSS](https://pr-helper.bayjf.com/rss.xml)

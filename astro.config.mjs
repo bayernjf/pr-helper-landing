@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // Cloudflare Pages 默认域名：<project-name>.pages.dev
 // 绑定自定义域名后需同步修改此字段与 consts.ts
-const SITE = 'https://pr-helper-landing.pages.dev';
+const SITE = 'https://pr-helper.bayjf.com';
 
 // https://astro.build/config
 export default defineConfig({

@@ -27,7 +27,7 @@ npm run preview  # 预览构建产物
    - Build command: `npm run build`
    - Build output directory: `dist`
    - Node version: `22`（环境变量 `NODE_VERSION=22`）
-4. 保存并部署。默认域名：`https://pr-helper-landing.pages.dev`。
+4. 保存并部署。默认域名：`https://pr-helper.bayjf.com`。
 
 ### CLI 部署（可选）
 

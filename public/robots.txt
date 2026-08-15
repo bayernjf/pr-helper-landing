@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pr-helper-landing.pages.dev/sitemap-index.xml
+Sitemap: https://pr-helper.bayjf.com/sitemap-index.xml

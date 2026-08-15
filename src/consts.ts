@@ -2,7 +2,7 @@
 // 绑定自定义域名后，需同步修改 astro.config.mjs 的 site 字段
 
 // Cloudflare Pages 默认域名：<project-name>.pages.dev
-export const SITE_URL = 'https://pr-helper-landing.pages.dev';
+export const SITE_URL = 'https://pr-helper.bayjf.com';
 export const SITE_NAME = 'PR Helper';
 export const SITE_TITLE = 'PR Helper | GitHub PR / Release Control Tower';
 export const SITE_DESCRIPTION =
